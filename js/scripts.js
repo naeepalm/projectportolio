@@ -5,21 +5,41 @@
     */
     (function($) {
     "use strict"; // Start of use strict
-  
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
-      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-        var target = $(this.hash);
-        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-        if (target.length) {
-          $('html, body').animate({
-            scrollTop: (target.offset().top - 71)
-          }, 1000, "easeInOutExpo");
-          return false;
-        }
-      }
+
+
+    $(document).ready(function(){
+      $(".portfolio-link").click(function(){
+        $(".portfolio").slideToggle("slow");
+        $("#about").slideUp("slow");
+        $("#contact").slideUp("slow");
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#portfolio").offset().top
+      }, 1000);
+      });
     });
-  
+
+    $(document).ready(function(){
+      $(".about-link").click(function(){
+        $("#about").slideToggle("slow");
+        $("#portfolio").slideUp("slow");
+        $("#contact").slideUp("slow");
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#about").offset().top
+      }, 1000);
+      });
+    });
+
+    $(document).ready(function(){
+      $(".contact-link").click(function(){
+        $("#contact").slideToggle("slow");
+        $("#about").slideUp("slow");
+        $("#portfolio").slideUp("slow");
+        $([document.documentElement, document.body]).animate({
+          scrollTop: $("#contact").offset().top
+      }, 1000);
+      });
+    });
+
     // Scroll to top button appear
     $(document).scroll(function() {
       var scrollDistance = $(this).scrollTop();
